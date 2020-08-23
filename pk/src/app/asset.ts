@@ -1,8 +1,8 @@
 export class Asset {
 
-
-    assetCategory: string;
-    assetDescription:string;
-    dateOfPurcase:Date;
-    assetCost:number;
+  id: number;
+  assetCategory: string;
+  assetDescription: string;
+  dateOfPurcase: string;
+  assetCost: number;
 }

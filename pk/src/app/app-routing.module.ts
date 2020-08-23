@@ -6,6 +6,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { HomeComponent } from './home/home.component';
 import { ViewComponent } from './view/view.component';
 import { AuthGuard } from './login/login-authguarg.service';
+import { AuthGuardGuard } from './auth-guard.guard';
 
 
 const routes: Routes = [
@@ -13,7 +14,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'account/:id', component: CreateAccountComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'view', component: ViewComponent },
+  { path: 'view', component: ViewComponent, canActivate: [AuthGuardGuard] },
   { path: 'login', canActivate: [AuthGuard], component: LoginComponent },
   { path: '**', component: PageNotFoundComponent }
 ];

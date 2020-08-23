@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute,Router,ParamMap} from '@angular/router'
-import {FormBuilder,Validator,FormGroup,FormControl, Validators, AbstractControl} from '@angular/forms'
+import { ActivatedRoute, Router, ParamMap } from '@angular/router'
+import { FormBuilder, Validator, FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms'
 import { Key } from 'protractor';
 
 @Component({
@@ -10,73 +10,73 @@ import { Key } from 'protractor';
 })
 export class CreateAccountComponent implements OnInit {
 
-//CustDet:FormGroup;
-assetManagement:FormGroup;
-id:string;
-Value:number =500;
-submitted:boolean= false;
-occupation =[{id:1,value:"sal",name:"sal"}];
-user:{id:string}
-  constructor(private router:Router,private route:ActivatedRoute,private formBuilder:FormBuilder) {
-   }
- 
+  //CustDet:FormGroup;
+  assetManagement: FormGroup;
+  id: string;
+  Value: number = 500;
+  submitted: boolean = false;
+  occupation = [{ id: 1, value: "sal", name: "sal" }];
+  user: { id: string }
+  constructor(private router: Router, private route: ActivatedRoute, private formBuilder: FormBuilder) {
+  }
+
   ngOnInit(): void {
-  this.route.url.subscribe(url=>{
-    this.id = url[1].path;
-  });
+    this.route.url.subscribe(url => {
+      this.id = url[1].path;
+    });
 
 
-this.assetManagement = this.formBuilder.group({
-  assetName:['',[Validators.required]],
-  assetCategory:['',Validators.required],
-  assetDescription:['',[Validators.required,Validators.maxLength(50)]],
-  dateOfPurcase:['',[Validators.required,purchaseDatevalidation]],
-  assetCost:['',[Validators.required]]
-  
-    });  
-    } 
+    this.assetManagement = this.formBuilder.group({
+      assetName: ['', [Validators.required]],
+      assetCategory: ['', Validators.required],
+      assetDescription: ['', [Validators.required, Validators.maxLength(50)]],
+      dateOfPurcase: ['', [Validators.required, purchaseDatevalidation]],
+      assetCost: ['', [Validators.required]]
 
-    saveDetails(){
-      if (this.assetManagement.invalid) {
-        this.submitted=true;
-       }
-       else{
-         const assetManagementData={
-          assetName:this.assetManagement.get('assetName').value,
-          assetCategory:this.assetManagement.get('assetCategory').value,
-          assetDescription:this.assetManagement.get('assetDescription').value,
-          dateOfPurcase:this.assetManagement.get('dateOfPurcase').value,
-          assetCost:this.assetManagement.get('assetCost').value
-         }
-         var a = assetManagementData;
-         let b:number=1;
-         this.router.navigate(['view'],{queryParams:{id:b}});
-       }
-  
+    });
+  }
+
+  saveDetails() {
+    if (this.assetManagement.invalid) {
+      this.submitted = true;
+    }
+    else {
+      const assetManagementData = {
+        assetName: this.assetManagement.get('assetName').value,
+        assetCategory: this.assetManagement.get('assetCategory').value,
+        assetDescription: this.assetManagement.get('assetDescription').value,
+        dateOfPurcase: this.assetManagement.get('dateOfPurcase').value,
+        assetCost: this.assetManagement.get('assetCost').value
+      }
+      var a = assetManagementData;
+      let b: number = 1;
+      this.router.navigate(['view'], { queryParams: { id: b } });
     }
 
-    get f(){
-      return this.assetManagement.controls
-    } 
-    assetddl(event) {
-      this.assetCategory.setValue(event.target.value, {
-        onlySelf: true
-      })
-    }
-get assetCategory(){
-  return this.assetManagement.get('assetCategory');
-}
-// this.CustDet = this.formBuilder.group({
-// custName :['',Validators.required],
-// dob:['',[Validators.required,datevalidation]],
-// pan:['',Validators.required],
-// gender:['',Validators.required],
-// amount:['',Validators.required],
-// ocu:['',[Validators.required]],
-// meal:['',Validators.required]
+  }
 
-//   });  
-//   } 
+  get f() {
+    return this.assetManagement.controls
+  }
+  assetddl(event) {
+    this.assetCategory.setValue(event.target.value, {
+      onlySelf: true
+    })
+  }
+  get assetCategory() {
+    return this.assetManagement.get('assetCategory');
+  }
+  // this.CustDet = this.formBuilder.group({
+  // custName :['',Validators.required],
+  // dob:['',[Validators.required,datevalidation]],
+  // pan:['',Validators.required],
+  // gender:['',Validators.required],
+  // amount:['',Validators.required],
+  // ocu:['',[Validators.required]],
+  // meal:['',Validators.required]
+
+  //   });
+  //   }
 
   // saveDetails(){
   //   if (this.CustDet.invalid) {
@@ -99,7 +99,7 @@ get assetCategory(){
 
   // get f(){
   //   return this.CustDet.controls
-  // } 
+  // }
   // ddl(event) {
   //   this.ocuName.setValue(event.target.value, {
   //     onlySelf: true
@@ -120,23 +120,23 @@ get assetCategory(){
   //   return this.CustDet.get('ocu');
   // }
 }
-function purchaseDatevalidation(control: AbstractControl): {[key:string]:any} | null{
-  let dob:Date =new Date(control.value);
-  let date:Date=new Date();
-  if(dob>date){
-    return {'dateinvalid' :true}
+function purchaseDatevalidation(control: AbstractControl): { [key: string]: any } | null {
+  let dob: Date = new Date(control.value);
+  let date: Date = new Date();
+  if (dob > date) {
+    return { 'dateinvalid': true }
   }
 }
-function datevalidation(control: AbstractControl): {[key:string]:any} | null{
-  let dob:Date =new Date(control.value);
-  let date:Date=new Date();
+function datevalidation(control: AbstractControl): { [key: string]: any } | null {
+  let dob: Date = new Date(control.value);
+  let date: Date = new Date();
   date.setFullYear(date.getFullYear() - 10)
-  if(dob<date){
-    return {'dateinvalid' :true}
+  if (dob < date) {
+    return { 'dateinvalid': true }
   }
 }
-function ocuvali(contol:AbstractControl):{[key:string]:any}|null{
-let a=contol.value;
-  return {'ocuinvalid' :true}
+function ocuvali(contol: AbstractControl): { [key: string]: any } | null {
+  let a = contol.value;
+  return { 'ocuinvalid': true }
 }
 
