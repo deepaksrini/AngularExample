@@ -1,0 +1,18 @@
+<div *ngFor="let data of Data">
+    <div>{{data.Name}}</div>
+    <div>{{data.Data |dataType}}</div>
+    <div><button (click)="del(data.id)">delete</button></div>
+</div>
+
+<form class="form-group" [formGroup]="assetManagement">
+<label>Asset Category</label>
+<select fromControlName="assetCategory" id="assetCategory" class="form-control"  (change)="assetddl($event)">
+    <option Value="" >select</option>
+    <option Value="assetDescription" >assetDescription</option>
+    <option Value="dateOfPurcase" >dateOfPurcase</option>
+    <option Value="assetCost" >assetCost</option>
+</select>
+<label>Asset Description</label>
+<input type="text" formControlName="assetDescription" id="assetDescription"  class="form-control">
+<div><button (click)="test()">delete</button></div>
+</form>

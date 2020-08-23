@@ -1,0 +1,112 @@
+<!-- 
+<div ngClass="select">Helo</div>
+ <div [ngClass]="select">Helo</div>
+ <div ngClass="className">Helo</div> 
+<div [ngClass]="className">Helo</div> -->
+
+<!-- <form class="form-group" [formGroup]="CustDet" (ngSubmit)="saveDetails()">
+    <label for="lastName">Customer Name</label>
+    <input type="text" formControlName="custName" id="custName" pattern="[^\s][a-zA-Z ]*[^\s]" class="form-control" />
+    <div *ngIf="submitted && f.custName.errors" >
+        <div *ngIf="f.custName.errors.required" style="color:red">cust Name is required</div>
+        <div *ngIf="f.custName.errors.pattern" style="color:red">cts name invalid</div>
+    </div> -->
+    <!-- <br /> <br />
+    <label for="lastName">Data Pack</label>
+    <input type="text" formControlName="data" id="data"  class="form-control" /> -->
+    <!-- <div *ngIf="submitted && f.data.errors" >
+        <div *ngIf="f.data.errors.required" style="color:red">cust Name is required</div>
+    </div> -->
+    <!-- <br /> <br />
+    <label for="dob">DOB</label>
+    <input type="date" formControlName="dob" id="dob"  class="form-control">
+        <div *ngIf="submitted && f.dob.errors" >
+            <div *ngIf="f.dob.errors.required" style="color:red">dob is required</div>
+            <div *ngIf="f.dob.errors.dateinvalid" style="color:red">dob invalid</div>
+        </div>
+    <br /> <br />   
+    <label>Occupation</label>
+    <select fromControlName="ocu" id="ocu" class="form-control"  (change)="ddl($event)">
+        <option value="">Choose your city</option>
+        <option *ngFor="let ocup of occupation" [ngValue]="ocup.value" >{{ocup.name}}</option>
+    </select>
+    <div *ngIf="submitted && f.ocu.errors" >
+        <div *ngIf="f.ocu.errors?.required" style="color:red">ocu is required</div>
+    </div>
+    <br /> <br />   
+    <label>Mealtype</label>
+    <select fromControlName="meal" id="meal" (change)="menuchange($event)" class="form-control">
+        <option Value="" >select</option>
+        <option Value="indian" >indian</option>
+        <option Value="western" >western</option>
+        <option Value="italy" >italy</option>
+    </select>
+    <div *ngIf="submitted && f.ocu.errors" >
+        <div *ngIf="f.meal.errors?.required" style="color:red">meal is required</div>
+    </div>
+    <br /> <br />
+    <label>PAN</label>
+    <input type="text" formControlName="pan" id="pan" pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}" class="form-control">
+    <div *ngIf="submitted && f.pan.errors" >
+        <div *ngIf="f.pan.errors.required" style="color:red">PAN is required</div>
+        <div *ngIf="f.pan.errors.pattern" style="color:red">PAN invalid</div>
+    </div>
+    <br /> <br />
+    <label>amount</label>
+    <input type="number" formControlName="amount" id="amount" pattern="[0-9]+" class="form-control">
+    <div *ngIf="submitted && f.amount.errors" >
+        <div *ngIf="f.amount.errors.required" style="color:red">amount is required</div>
+        <div *ngIf="f.amount.errors.pattern ||f.amount.errors.amountvalidation" style="color:red">amount invalid</div>
+    </div>
+    <br /> <br />
+    <label>Gender</label>
+    <input type="radio" formControlName="gender" id="male" value="male"><label for="male">Male</label>
+    <input type="radio" formControlName="gender" id="female" value="female"><label for="female">Female</label>
+    <div *ngIf="submitted && f.gender.errors">
+        <div *ngIf="f.gender.errors?.required" style="color:red">Select gender</div>
+    </div>
+    <br /> <br />
+    
+    <input type="submit" value="Create Account" />
+</form> -->
+<p>{{Value | currency:'INR':'code'}}</p>
+<form class="form-group" [formGroup]="assetManagement" (ngSubmit)="saveDetails()">
+    <label for="lastName">Asset Name</label>
+    <input type="text" formControlName="assetName" id="assetName" class="form-control" />
+    <div *ngIf="submitted && f.assetName.errors" >
+        <div *ngIf="f.assetName.errors.required" style="color:red">cust Name is required</div>
+    </div>
+   <br /> <br />    
+    <label>Asset Category</label>
+    <select fromControlName="assetCategory" id="assetCategory" class="form-control"  (change)="assetddl($event)">
+        <option Value="" >select</option>
+        <option Value="indian" >indian</option>
+        <option Value="western" >western</option>
+        <option Value="italy" >italy</option>
+    </select>
+    <div *ngIf="submitted && f.assetCategory.errors" >
+        <div *ngIf="f.assetCategory.errors?.required" style="color:red">meal is required</div>
+    </div>
+    <br /> <br />
+    <label>Asset Description</label>
+    <input type="text" formControlName="assetDescription" id="assetDescription"  class="form-control">
+    <div *ngIf="submitted && f.assetDescription.errors" >
+        <div *ngIf="f.assetDescription.errors?.required" style="color:red">Desc is required</div>
+        <div *ngIf="f.assetDescription.errors?.maxlength" style="color:red">Desc is max</div>
+    </div>
+    <br /> <br />
+    <label for="dateOfPurcase">Date Of Purcase</label>
+    <input type="date" formControlName="dateOfPurcase" id="dateOfPurcase"  class="form-control">
+        <div *ngIf="submitted && f.dateOfPurcase.errors" >
+            <div *ngIf="f.dateOfPurcase.errors.required" style="color:red">pur date is required</div>
+            <div *ngIf="f.dateOfPurcase.errors.dateinvalid" style="color:red">pur date invalid</div>
+        </div>
+    <br /> <br /> 
+    <label>Asset Cost</label>
+    <input type="number" formControlName="assetCost" id="assetCost" pattern="[0-9]+" class="form-control">
+    <div *ngIf="submitted && f.assetCost.errors" >
+        <div *ngIf="f.assetCost.errors.required" style="color:red">amount is required</div>
+    </div> 
+    <br /> <br />
+    <input type="submit" value="Create Account" />
+</form>
